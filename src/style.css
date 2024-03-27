@@ -7,13 +7,29 @@ header {
     text-align: center;
     color: rgba(0, 0, 0, 0.8);
   }
+  
   section.body {
     margin: 0 auto;
     width: 90%;
   }
+  
   nav {
     margin-bottom: 10px;
   }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  ul > li {
+    border: solid 1px #ccc;
+    padding: 8px;
+    width: 80px;
+    display: inline-block;
+    text-align: center;
+  }
+
 .card {
     border: solid 1px #999;
     border-radius: 8px;
@@ -34,7 +50,7 @@ table {
     background-color: #777;
     color: white;
   }
-  
+
   th,
   td {
     height: 30px;
