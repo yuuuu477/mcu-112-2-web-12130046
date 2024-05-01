@@ -13,15 +13,18 @@ export class ProductCardComponent {
   @Input() authors!: string[];
   @Input() company!: string;
   @Input() imgUrl!: string;
-
   @Input({ transform: booleanAttribute })
   isShow!: boolean;
-
   @Input() createDate!: Date;
   @Input({ transform: numberAttribute }) price!: number;
-
   @HostBinding('class')
   class = 'product-card';
+
+  @Output()
+  edit = new EventEmitter<void>();
+
+  @Output()
+  remove = new EventEmitter<void>();
 
   @Output()
   view = new EventEmitter<void>();

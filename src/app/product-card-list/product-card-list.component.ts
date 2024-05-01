@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../model/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
-
 @Component({
   selector: 'app-product-card-list',
   standalone: true,
@@ -12,6 +11,12 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductCardListComponent {
   @Input({ required: true })
   products!: Product[];
+
+  @Output()
+  edit = new EventEmitter<Product>();
+
+  @Output()
+  remove = new EventEmitter<Product>();
 
   @Output()
   view = new EventEmitter<Product>();
