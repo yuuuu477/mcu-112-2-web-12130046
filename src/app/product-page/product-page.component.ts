@@ -17,7 +17,6 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     this.products = this.productService.getList();
   }
-
   onAdd(): void {
     const product = new Product({
       name: '書籍 Z',
@@ -30,10 +29,14 @@ export class ProductPageComponent implements OnInit {
     });
     this.productService.add(product);
   }
-
   onEdit(product: Product): void {
     this.router.navigate(['product', 'form', product.id]);
   }
+
+  onRemove({ id }: Product): void {
+    this.productService.remove(id);
+  }
+
   onView(product: Product): void {
     this.router.navigate(['product', 'view', product.id]);
   }
