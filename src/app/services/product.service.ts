@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, delay, of } from 'rxjs';
 import { Product } from '../model/product';
 @Injectable({
   providedIn: 'root',
@@ -51,8 +52,8 @@ export class ProductService {
     return this._data.find(({ id }) => id === productId)!;
   }
 
-  getList(): Product[] {
-    return this._data;
+  getList(): Observable<Product[]> {
+    return of(this._data).pipe(delay(2000));
   }
   add(product: Product): void {
     const id = this._data.length === 0 ? 1 : Math.max(...this._data.map(({ id }) => id)) + 1;

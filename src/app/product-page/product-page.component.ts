@@ -15,7 +15,7 @@ export class ProductPageComponent implements OnInit {
   private productService = inject(ProductService);
   products!: Product[];
   ngOnInit(): void {
-    this.products = this.productService.getList();
+    this.productService.getList().subscribe((products) => (this.products = products));
   }
   onAdd(): void {
     const product = new Product({
