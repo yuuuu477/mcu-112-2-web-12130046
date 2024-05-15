@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, startWith, switchMap } from 'rxjs';
 import { Product } from '../model/product';
 import { ProductCardListComponent } from '../product-card-list/product-card-list.component';
 import { ProductService } from '../services/product.service';
@@ -14,8 +15,15 @@ export class ProductPageComponent implements OnInit {
   router = inject(Router);
   private productService = inject(ProductService);
   products!: Product[];
+
+  private readonly refresh$ = new Subject<void>();
   ngOnInit(): void {
-    this.productService.getList().subscribe((products) => (this.products = products));
+    this.refresh$
+      .pipe(
+        startWith(undefined),
+        switchMap(() => this.productService.getList())
+      )
+      .subscribe((products) => (this.products = products));
   }
   onAdd(): void {
     const product = new Product({
@@ -27,14 +35,14 @@ export class ProductPageComponent implements OnInit {
       createDate: new Date(),
       price: 10000,
     });
-    this.productService.add(product).subscribe();
+    this.productService.add(product).subscribe(() => this.refresh$.next());
   }
   onEdit(product: Product): void {
     this.router.navigate(['product', 'form', product.id]);
   }
 
   onRemove({ id }: Product): void {
-    this.productService.remove(id).subscribe();
+    this.productService.remove(id).subscribe(() => this.refresh$.next());
   }
 
   onView(product: Product): void {
