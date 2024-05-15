@@ -17,7 +17,7 @@ export class ProductDetailPageComponent implements OnInit {
   private router = inject(Router);
   private productService = inject(ProductService);
   ngOnInit(): void {
-    this.product = this.productService.getById(this.id);
+    this.productService.getById(this.id).subscribe((product) => (this.product = product));
   }
   onEdit(): void {
     this.router.navigate(['product', 'form', this.product.id]);
