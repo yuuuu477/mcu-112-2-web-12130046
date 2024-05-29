@@ -19,6 +19,7 @@ export class ProductRemoteService extends ProductService {
   override getList(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
     const query: { [key: string]: string | number } = { _page: pageIndex, _limit: pageSize };
     if (name !== undefined) query['name'] = name;
+    ``;
     const params = new HttpParams({ fromObject: query });
     return this.httpClient.get<Product[]>(this.url, { params });
   }
