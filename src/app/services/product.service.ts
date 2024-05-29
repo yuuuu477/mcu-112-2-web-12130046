@@ -56,6 +56,9 @@ export class ProductService {
   getList(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
     return of(this._data);
   }
+  getCount(name?: string): Observable<number> {
+    throw new Error('NO');
+  }
   add(product: Product): Observable<Product> {
     const id = this._data.length === 0 ? 1 : Math.max(...this._data.map(({ id }) => id)) + 1;
     const newProduct = new Product({ ...product, id });
