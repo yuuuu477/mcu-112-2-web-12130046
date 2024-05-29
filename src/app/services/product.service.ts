@@ -53,7 +53,7 @@ export class ProductService {
     return of(product);
   }
 
-  getList(): Observable<Product[]> {
+  getList(name: string | undefined, pageIndex: number, pageSize: number): Observable<Product[]> {
     return of(this._data);
   }
   add(product: Product): Observable<Product> {

@@ -19,7 +19,7 @@ export class ProductPageComponent {
   private readonly refresh$ = new Subject<void>();
   readonly products$ = this.refresh$.pipe(
     startWith(undefined),
-    switchMap(() => this.productService.getList())
+    switchMap(() => this.productService.getList('書籍B', 1, 5))
   );
 
   onAdd(): void {
