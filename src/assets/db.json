@@ -99,16 +99,17 @@
       "id": 7
     },
     {
+      "id": 8,
       "name": "a",
       "authors": [
-        "vf"
+        "vf",
+        "kj"
       ],
-      "company": "hbdb",
+      "company": "hbdb516",
       "isShow": false,
       "imgUrl": "https://api.fnkr.net/testimg/200x200/DDDDDD/999999/?text=img",
-      "createDate": "2024-06-05T10:26:07.864Z",
-      "price": "41257",
-      "id": 8
+      "createDate": "2024-06-05T10:31:05.725Z",
+      "price": "41257"
     }
   ]
 }
